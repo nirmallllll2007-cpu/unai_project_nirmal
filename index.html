@@ -1,11 +1,29 @@
 <!DOCTYPE html>
-<html lang="eng">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-    <script src="script.js"></script>
-    <p>first UNAI Project</p>
-    </body>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Visual Workflow Builder</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="card">
+    <header>
+      <h1>Visual Workflow Builder</h1>
+    </header>
+
+    <main class="app">
+      <aside class="library">
+        <h2>Blocks</h2>
+        <div class="block" draggable="true" data-type="Trigger">Trigger</div>
+        <div class="block" draggable="true" data-type="Action">Action</div>
+        <div class="block" draggable="true" data-type="Condition">Condition</div>
+        <div class="block" draggable="true" data-type="AI">AI</div>
+      </aside>
+
+      <section class="canvas" id="canvas"></section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
