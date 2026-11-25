@@ -1,6 +1,32 @@
-body{
-    background-color: lavender;
+body {
+  background-color: lavender;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
 }
+
+.card {
+  width: 320px;
+  max-width: 92%;
+  padding: 20px;
+  margin: 30px auto;
+  border: 2px solid #7c6bb5;
+  border-radius: 12px;
+  background-color: lightblue;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+h1 {
+  margin-top: 0;
+  font-size: 22px;
+}
+
+h2 {
+  margin: 10px 0 8px;
+  font-size: 18px;
+}
+
 .block {
   padding: 8px 12px;
   margin: 6px 0;
@@ -8,6 +34,45 @@ body{
   border: 1px solid #7c6bb5;
   border-radius: 6px;
   cursor: pointer;
+}
+
+.block:hover {
+  background-color: #f3f0ff;
+}
+
+#clear-btn {
+  margin-top: 10px;
+  padding: 8px 14px;
+  background-color: #7c6bb5;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+#clear-btn:hover {
+  background-color: #65549d;
+}
+
+#step-count {
+  margin: 10px 0 4px;
+  font-weight: bold;
+}
+
+#status-msg {
+  min-height: 18px;
+  margin: 4px 0 10px;
+  font-size: 13px;
+  color: #222222;
+}
+
+.canvas {
+  min-height: 80px;
+  padding: 8px;
+  background-color: rgba(255, 255, 255, 0.55);
+  border: 1px solid #7c6bb5;
+  border-radius: 8px;
 }
 
 .workflow-step {
@@ -18,4 +83,8 @@ body{
   border-radius: 6px;
   font-size: 14px;
   cursor: pointer;
+}
+
+.workflow-step:first-child {
+  margin-top: 0;
 }

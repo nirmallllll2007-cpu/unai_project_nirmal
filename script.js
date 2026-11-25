@@ -1,16 +1,43 @@
-// 1. Grab the workflow blocks, canvas, and live step counter element
+// 1. Select the elements we need from the page
 const blocks = document.querySelectorAll(".block");
 const canvas = document.querySelector("#canvas");
 const stepCountEl = document.querySelector("#step-count");
+const clearBtn = document.querySelector("#clear-btn");
+const statusMsgEl = document.querySelector("#status-msg");
 
-// 2. Keep the live step counter synced with the steps currently in #canvas
+// Show a short status message to the user
+function setStatusMessage(message) {
+  if (!statusMsgEl) return;
+  statusMsgEl.textContent = message;
+}
+
+// Count how many workflow steps are currently inside #canvas and update the text
 function updateStepCount() {
   if (!canvas || !stepCountEl) return;
   const totalSteps = canvas.querySelectorAll(".workflow-step").length;
   stepCountEl.textContent = `Total Steps: ${totalSteps}`;
 }
 
-// 3. Add a step when a block is clicked, and allow removing a step on click
+// Clear all steps, or show a message if there are already 0 steps
+function clearWorkflow() {
+  if (!canvas) return;
+
+  const steps = canvas.querySelectorAll(".workflow-step");
+
+  if (steps.length === 0) {
+    setStatusMessage("Workflow is already empty.");
+    return;
+  }
+
+  steps.forEach((step) => {
+    step.remove();
+  });
+
+  updateStepCount();
+  setStatusMessage("Workflow cleared.");
+}
+
+// 2. When a block is clicked, create a step inside #canvas
 blocks.forEach((block) => {
   block.addEventListener("click", () => {
     if (!canvas) return;
@@ -21,15 +48,23 @@ blocks.forEach((block) => {
     step.className = "workflow-step";
     step.textContent = `${blockType} (click to remove)`;
 
+    // Clicking an individual step removes only that step
     step.addEventListener("click", () => {
       step.remove();
       updateStepCount();
+      setStatusMessage("Removed one step.");
     });
 
     canvas.appendChild(step);
     updateStepCount();
+    setStatusMessage("");
   });
 });
 
-// 4. Initialize the counter on load
+// 3. Connect the Clear Workflow button
+if (clearBtn) {
+  clearBtn.addEventListener("click", clearWorkflow);
+}
+
+// 4. Set the initial step count when the page loads
 updateStepCount();
